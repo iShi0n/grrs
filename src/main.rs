@@ -3,10 +3,12 @@ use anyhow::{Context, Result};
 use clap::Parser;
 
 #[derive(Parser)]
+#[clap(author, version)]
 struct Cli {
     pattern: String,
     #[clap(parse(from_os_str))]
     path: std::path::PathBuf,
+    /// Highlight matching string
     #[clap(long)]
     color: bool,
 }

@@ -24,15 +24,17 @@ fn main() -> Result<()> {
     for line in content.lines() {
         let index_found = line.find(&args.pattern);
 
-        if index_found != None {
-            if args.color {
-                println!(
-                    "{}",
-                    line.replace(&args.pattern, &Red.paint(&args.pattern).to_string())
-                );
-            } else {
-                println!("{}", line);
-            }
+        if index_found == None {
+            continue;
+        }
+
+        if args.color {
+            println!(
+                "{}",
+                line.replace(&args.pattern, &Red.paint(&args.pattern).to_string())
+            );
+        } else {
+            println!("{}", line);
         }
     }
 

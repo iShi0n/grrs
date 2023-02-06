@@ -20,6 +20,8 @@ struct CustomError(String);
 
 fn main() -> Result<()> {
     let args = Cli::parse();
+
+    #[cfg(target_os = "windows")]
     let _enabled = ansi_term::enable_ansi_support();
 
     let content = std::fs::read_to_string(&args.path)
